@@ -28,4 +28,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('permissions', 'WebController\Backend\PermissionController');
     Route::resource('users', 'WebController\Backend\UserController');
     Route::resource('blogs', 'WebController\Backend\BlogController');
+    Route::resource('tickets', 'WebController\Backend\TicketController');
+    Route::get('site-setting', 'WebController\Backend\SettingController@siteSetting')->name('sitesetting');
+    Route::get('create-setting', 'WebController\Backend\SettingController@createSetting')->name('createSetting');
 });

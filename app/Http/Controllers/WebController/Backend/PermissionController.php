@@ -31,7 +31,7 @@ class PermissionController extends Controller
     {
         $permissions = Permission::orderBy('id', 'DESC')->get();
         return view('backend.permission.index', compact('permissions'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+        ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     
     /**

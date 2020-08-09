@@ -28,11 +28,12 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $blogs = Blog::latest()->paginate(5);
         return view('backend.blogs.index', compact('blogs'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        ->with('i', ($request->input('page', 1) - 1) * 5);
+        ;
     }
     
     /**
