@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\WebController\Backend;
 
 use App\Http\Controllers\Controller;
+use DB;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
-use DB;
+use Spatie\Permission\Models\Role;
 
 class PermissionController extends Controller
 {
@@ -95,13 +96,8 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        $role = Role::find($id);
-        $permission = Permission::get();
-        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id", $id)
-            ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
-            ->all();
-    
-        return view('backend.roles.edit', compact('role', 'permission', 'rolePermissions'));
+        $permission = Permission::find($id);
+        return view('backend.permission.edit', compact('permission'));
     }
     
     /**
@@ -114,18 +110,14 @@ class PermissionController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'permission' => 'required',
+            'name' => 'required'
         ]);
     
-        $role = Role::find($id);
-        $role->name = $request->input('name');
-        $role->save();
-    
-        $role->syncPermissions($request->input('permission'));
-        toastr()->success('Role updated successfully');
-        return redirect()->route('roles.index')
-                        ->with('success', 'Role updated successfully');
+        $permission = Permission::find($id);
+        $permission->name = $request->input('name');
+        $permission->save();
+        toastr()->success('Permission updated successfully');
+        return redirect()->route('permissions.index');
     }
     /**
      * Remove the specified resource from storage.
