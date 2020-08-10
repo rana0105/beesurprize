@@ -110,18 +110,26 @@
                     <label for="f_image">
                         Featured Image
                     </label>
-                    <input class="form-control" id="f_image" name="f_image" type="file">
-                    </input>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="f_image">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="g_image">
                         Gallery Image
                     </label>
-                    <input class="form-control" id="g_image" name="g_image" type="file">
-                    </input>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="g_image">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            <div class="form-group col-xs-12 col-sm-12 col-md-12 text-center">
                 <button class="btn btn-success" type="submit">
                     Submit
                 </button>
@@ -130,10 +138,53 @@
     </div>
 </div>
 @endsection
+@section('style')
+<style>
+    .photo-left {
+        float: left; 
+    }
+</style>
+@endsection
 @section('script')
+<script src="{{ asset('js/spartan-multi-image-picker-min.js') }}">
+</script>
 <script>
     tinymce.init({
      selector: 'textarea#detail'
    });
+    $(document).ready(function(){
+        $("#g_image").spartanMultiImagePicker({
+            fieldName:        'g_image[]',
+            maxCount:         5,
+            rowHeight:        '100px',
+            groupClassName:   'col-md-4 col-sm-4 col-xs-6 photo-left',
+            maxFileSize:      '',
+            dropFileLabel : "Drop Here",
+            onExtensionErr : function(index, file){
+                console.log(index, file,  'extension err');
+                alert('Please only input png or jpg type file')
+            },
+            onSizeErr : function(index, file){
+                console.log(index, file,  'file size too big');
+                alert('File size too big');
+            }
+        });
+        $("#f_image").spartanMultiImagePicker({
+            fieldName:        'f_image',
+            maxCount:         1,
+            rowHeight:        '100px',
+            groupClassName:   'col-md-4 col-sm-4 col-xs-6',
+            maxFileSize:      '',
+            dropFileLabel : "Drop Here",
+            onExtensionErr : function(index, file){
+                console.log(index, file,  'extension err');
+                alert('Please only input png or jpg type file')
+            },
+            onSizeErr : function(index, file){
+                console.log(index, file,  'file size too big');
+                alert('File size too big');
+            }
+        });
+    });
 </script>
 @endsection
