@@ -181,7 +181,83 @@
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="form-group col-xs-12 col-sm-12 col-md-12 text-center" style="margin-top: 10px;">
+=======
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="amount">
+                        Ticket Amount
+                    </label>
+                    <input class="form-control" id="amount" name="amount" type="text">
+                    </input>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="price">
+                        Ticket Price
+                    </label>
+                    <input class="form-control" id="price" name="price" type="text">
+                    </input>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="p_details">
+                        Prize Details
+                    </label>
+                    <input class="form-control" id="p_details" name="p_details" type="text">
+                    </input>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="c_details">
+                        Competitions Details
+                    </label>
+                    <input class="form-control" id="c_details" name="c_details" type="text">
+                    </input>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="p_details">
+                        Competitions Create Date
+                    </label>
+                    <input class="form-control" id="p_details" name="p_details" type="date">
+                    </input>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="c_details">
+                        Competitions End Date
+                    </label>
+                    <input class="form-control" id="c_details" name="c_details" type="date">
+                    </input>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="f_image">
+                        Featured Image
+                    </label>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="f_image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="g_image">
+                        Gallery Image
+                    </label>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="g_image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-12 col-md-12 text-center">
+>>>>>>> ab1c24099abc97c3e06ef302327cf8f48ed13211
                 <button class="btn btn-success" type="submit">
                     Submit
                 </button>
@@ -209,7 +285,11 @@
             fieldName:        'g_image[]',
             maxCount:         5,
             rowHeight:        '100px',
+<<<<<<< HEAD
             groupClassName:   'col-md-2 col-sm-2 col-xs-4 photo-left',
+=======
+            groupClassName:   'col-md-4 col-sm-4 col-xs-6 photo-left',
+>>>>>>> ab1c24099abc97c3e06ef302327cf8f48ed13211
             maxFileSize:      '',
             dropFileLabel : "Drop Here",
             onExtensionErr : function(index, file){
@@ -225,7 +305,11 @@
             fieldName:        'f_image',
             maxCount:         1,
             rowHeight:        '100px',
+<<<<<<< HEAD
             groupClassName:   'col-md-6 col-sm-6 col-xs-6',
+=======
+            groupClassName:   'col-md-4 col-sm-4 col-xs-6',
+>>>>>>> ab1c24099abc97c3e06ef302327cf8f48ed13211
             maxFileSize:      '',
             dropFileLabel : "Drop Here",
             onExtensionErr : function(index, file){
