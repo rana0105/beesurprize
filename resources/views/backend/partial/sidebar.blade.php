@@ -27,7 +27,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Super Admin Activities</span>
+          <span>Admin Activities</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -44,69 +44,47 @@
             <a class="collapse-item" href="{{ route('users.index') }}">All Users</a>
             @endcan
             @can('user-list')
+            <a class="collapse-item" href="{{ route('members') }}">Members</a>
+            @endcan
+            @can('user-list')
+            <a class="collapse-item" href="{{ route('winner-list') }}">Winner List</a>
+            @endcan
+            @can('user-list')
             <a class="collapse-item" href="{{ route('sitesetting') }}">Site Setting</a>
             @endcan
           </div>
         </div>
       </li>
 
-      <!-- Nav Item - Utilities Collapse Menu -->
-      {{-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="true" aria-controls="collapseProducts">
-          <i class="fas fa-database"></i>
-          <span>Products</span>
-        </a>
-        <div id="collapseProducts" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            @can('product-list')
-            <a class="collapse-item" href="javascript:void(0);">Products</a>
-            @endcan
-            @can('category-list')
-            <a class="collapse-item" href="javascript:void(0);">Category</a>
-            @endcan
-            @can('subcategory-list')
-            <a class="collapse-item" href="javascript:void(0);">Subcategory</a>
-            @endcan
-            @can('childcategory-list')
-            <a class="collapse-item" href="javascript:void(0);">Childcategory</a>
-            @endcan
-          </div>
-        </div>
-      </li> --}}
-
-      <!-- Nav Item - Utilities Collapse Menu -->
       <!-- Divider -->
-      {{-- <hr class="sidebar-divider">
+      <hr class="sidebar-divider">
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSetting" aria-expanded="true" aria-controls="collapseSetting">
-          <i class="fas fa-database"></i>
-          <span>Site Setting</span>
+        @can('blog-list')
+        <a class="nav-link collapsed" href="{{ route('live-competition.index') }}">
+          <i class="fas fa-ticket-alt"></i>
+          <span>Live Competition</span>
         </a>
-        <div id="collapseSetting" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            @can('product-list')
-            <a class="collapse-item" href="javascript:void(0);">Products</a>
-            @endcan
-            @can('category-list')
-            <a class="collapse-item" href="javascript:void(0);">Category</a>
-            @endcan
-            @can('subcategory-list')
-            <a class="collapse-item" href="javascript:void(0);">Subcategory</a>
-            @endcan
-            @can('childcategory-list')
-            <a class="collapse-item" href="javascript:void(0);">Childcategory</a>
-            @endcan
-          </div>
-        </div>
-      </li> --}}
+        @endcan
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
       <li class="nav-item">
         @can('blog-list')
-        <a class="nav-link collapsed" href="{{ route('tickets.index') }}">
+        <a class="nav-link collapsed" href="{{ route('upcoming-competition') }}">
           <i class="fas fa-ticket-alt"></i>
-          <span>Ticket List</span>
+          <span>Upcoming Competition</span>
+        </a>
+        @endcan
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+      <li class="nav-item">
+        @can('blog-list')
+        <a class="nav-link collapsed" href="{{ route('customer-testmonial') }}">
+          <i class="fas fa-ticket-alt"></i>
+          <span>Customer Testmonial</span>
         </a>
         @endcan
       </li>

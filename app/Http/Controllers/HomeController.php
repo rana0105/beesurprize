@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if ($user->user_type == 'Super Admin' || $user->user_type == 'Admin') {
+        if ($user->user_type == 'Admin') {
             return view('backend.dashboard');
         } elseif ($user->user_type == 'Vendor' || $user->user_type == 'Staff') {
             return redirect('vendor');

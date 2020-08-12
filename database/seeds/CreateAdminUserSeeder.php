@@ -20,7 +20,7 @@ class CreateAdminUserSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'phone' => '01917919032',
             'role_id' => 1,
-            'user_type' => 'Super Admin',
+            'user_type' => 'Admin',
             'user_status' => 'All',
             'password' => bcrypt('12345678')
         ]);

@@ -28,11 +28,26 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $data = User::orderBy('id', 'ASC')->paginate(5);
+        $data = User::orderBy('id', 'ASC')
+                ->where('user_type', '!=', 'User')
+                ->paginate(5);
         return view('backend.users.index', compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
+    public function members(Request $request)
+    {
+        $data = User::orderBy('id', 'ASC')
+                ->where('user_type', '=', 'User')
+                ->paginate(5);
+        return view('backend.users.members', compact('data'))
+            ->with('i', ($request->input('page', 1) - 1) * 5);
+    }
+
+    public function winnerList() 
+    {
+        return view('backend.users.winnerList');
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -6,7 +6,7 @@
   <div class="card shadow mb-4">
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary">
-        <a href="{{ route('tickets.create') }}"><i class="fa fa-plus" aria-hidden="true"></i>Add</a></h6>
+        <a href="{{ route('live-competition.create') }}"><i class="fa fa-plus" aria-hidden="true"></i>Add</a></h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">

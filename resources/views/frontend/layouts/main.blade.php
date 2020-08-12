@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Lara Seven ACL</title>
+  <title>Bee Surprize</title>
     @include('frontend.partial.style')
     @yield('style')
 </head>

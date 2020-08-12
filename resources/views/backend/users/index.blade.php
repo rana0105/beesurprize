@@ -120,10 +120,10 @@
                             {{ date('d-M-Y', strtotime($user->created_at)) }}
                         </td>
                         <td>
-                            <a class="admin-actionbtn" href="{{ route('users.show',$user->id) }}">
+                            {{-- <a class="admin-actionbtn" href="{{ route('users.show',$user->id) }}">
                                 <i aria-hidden="true" class="fa fa-eye fa-lg">
                                 </i>
-                            </a>
+                            </a> --}}
                             @can('user-edit')
                             <a class="admin-actionbtn" href="{{ route('users.edit',$user->id) }}">
                                 <i class="far fa-edit fa-lg">

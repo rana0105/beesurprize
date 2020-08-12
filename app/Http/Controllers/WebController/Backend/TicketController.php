@@ -19,6 +19,7 @@ class TicketController extends Controller
         return view('backend.ticket.index', compact('blogs'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -84,4 +85,16 @@ class TicketController extends Controller
     {
         //
     }
+
+    public function upcomingCompetition()
+    {
+        $blogs = Blog::latest()->paginate(5);
+        return view('backend.ticket.upcomingCompetition', compact('blogs'));
+    }
+
+    public function upcomingCompetitionCreate()
+    {
+        return view('backend.ticket.upcomingCompetitionCreate');
+    }
+
 }

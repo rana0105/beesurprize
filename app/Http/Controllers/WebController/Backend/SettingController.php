@@ -84,4 +84,14 @@ class SettingController extends Controller
     {
         //
     }
+
+    public function customerTestmonial()
+    {
+        return view('backend.testmonial.testmonial');
+    }
+
+    public function createcustomerTestmonial()
+    {
+        return view('backend.testmonial.testmonialCreate');
+    }
 }
