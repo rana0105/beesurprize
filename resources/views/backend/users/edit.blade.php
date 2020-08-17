@@ -80,6 +80,7 @@
                     {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
                 </div>
             </div>
+            @if($user->user_type != 'Admin')
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                     <strong>
@@ -88,6 +89,16 @@
                     {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control')) !!}
                 </div>
             </div>
+            @else
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <strong>
+                        Role:
+                    </strong>
+                    {!! Form::select('roles[]', $aroles,$userRole, array('class' => 'form-control')) !!}
+                </div>
+            </div>
+            @endif
             <div class="col-xs-6 col-sm-6 col-md-6 text-center">
                 <button class="btn btn-primary" type="submit">
                     Submit

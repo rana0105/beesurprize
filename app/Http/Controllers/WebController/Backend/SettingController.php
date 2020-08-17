@@ -94,4 +94,34 @@ class SettingController extends Controller
     {
         return view('backend.testmonial.testmonialCreate');
     }
+
+    public function emailTemplate()
+    {
+        return view('backend.emailtemplate.emailtemplate');
+    }
+
+    public function createTemplate()
+    {
+        return view('backend.emailtemplate.createTemplate');
+    }
+
+    public function mcqList()
+    {
+        return view('backend.mcqlist.mcqlist');
+    }
+
+    public function createMcqList()
+    {
+        return view('backend.mcqlist.createmcqlist');
+    }
+
+    public function competitionlist()
+    {
+        return view('backend.mcqlist.competitionList');
+    }
+
+    public function suscompetitionlist()
+    {
+        return view('backend.mcqlist.suscompetitionlist');
+    }
 }

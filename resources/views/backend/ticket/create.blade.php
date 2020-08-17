@@ -56,61 +56,209 @@
                                 <label for="p_details">
                                     Prize Details
                                 </label>
-                                <textarea class="form-control" id="p_details" name="p_details" cols="30" rows="4"></textarea>
+                                <textarea class="form-control" cols="30" id="p_details" name="p_details" rows="4">
+                                </textarea>
                             </div>
                             <div class="form-group">
                                 <label for="c_details">
                                     Competitions Details
                                 </label>
-                                <textarea class="form-control" id="c_details" name="c_details" cols="30" rows="4"></textarea>
+                                <textarea class="form-control" cols="30" id="c_details" name="c_details" rows="4">
+                                </textarea>
                             </div>
                             <div class="form-group">
-                                <label for="g_image">
-                                    Gallery Image
+                                <label for="question">
+                                    Question
                                 </label>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div id="g_image">
+                                <input class="form-control" id="question" name="question" type="text">
+                                </input>
+                            </div>
+                            <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a aria-controls="pills-home" aria-selected="true" class="nav-link active" data-toggle="pill" href="#pills-home" id="pills-home-tab" role="tab">
+                                        Text Ans
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a aria-controls="pills-profile" aria-selected="false" class="nav-link" data-toggle="pill" href="#pills-profile" id="pills-profile-tab" role="tab">
+                                        Image Ans
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+                                <div aria-labelledby="pills-home-tab" class="tab-pane fade show active" id="pills-home" role="tabpanel">
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label" for="ans_a">
+                                            Ans A
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" id="ans_a" name="ans_a" type="text">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label" for="ans_b">
+                                            Ans B
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" id="ans_b" name="ans_b" type="text">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label" for="ans_c">
+                                            Ans C
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" id="ans_c" name="ans_c" type="text">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label" for="ans_d">
+                                            Ans D
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" id="ans_d" name="ans_d" type="text">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label" for="cor_ans">
+                                            Select Ans
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <select name="cor_ans" class="form-control" id="makers" name="makers">
+                                                <option value="A">
+                                                    A
+                                                </option>
+                                                <option value="B">
+                                                    B
+                                                </option>
+                                                <option value="C">
+                                                    C
+                                                </option>
+                                                <option value="D">
+                                                    D
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div aria-labelledby="pills-profile-tab" class="tab-pane fade" id="pills-profile" role="tabpanel">
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label" for="ans_ai">
+                                            Ans A
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" id="ans_ai" name="ans_ai" type="file">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label" for="ans_bi">
+                                            Ans B
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" id="ans_bi" name="ans_bi" type="file">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label" for="ans_ci">
+                                            Ans C
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" id="ans_ci" name="ans_ci" type="file">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label" for="ans_di">
+                                            Ans D
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" id="ans_di" name="ans_di" type="file">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label" for="cor_ansi">
+                                            Select Ans
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <select name="cor_ansi" class="form-control" id="makers" name="makers">
+                                                <option value="A">
+                                                    A
+                                                </option>
+                                                <option value="B">
+                                                    B
+                                                </option>
+                                                <option value="C">
+                                                    C
+                                                </option>
+                                                <option value="D">
+                                                    D
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <p>
-                              <a class="btn btn-success" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                Specification
-                              </a>
+                                <a aria-controls="collapseExample" aria-expanded="false" class="btn btn-success" data-toggle="collapse" href="#collapseExample" role="button">
+                                    Specification
+                                </a>
                             </p>
                             <div class="collapse" id="collapseExample">
-                              <div class="card card-body">
-                                <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                      <label for="mile">Miles</label>
-                                      <input type="text" class="form-control" id="mile" placeholder="Mile">
+                                <div class="card card-body">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="mile">
+                                                Miles
+                                            </label>
+                                            <input class="form-control" name="mile" id="mile" placeholder="Mile" type="text">
+                                            </input>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="speed">
+                                                Speed
+                                            </label>
+                                            <input class="form-control" name="speed" id="speed" placeholder="Speed" type="text">
+                                            </input>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="power">
+                                                Power
+                                            </label>
+                                            <input class="form-control" name="power" id="power" placeholder="Power" type="text">
+                                            </input>
+                                        </div>
                                     </div>
-                                    <div class="form-group col-md-4">
-                                      <label for="speed">Speed</label>
-                                      <input type="text" class="form-control" id="speed" placeholder="Speed">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="displacement">
+                                                Displacement
+                                            </label>
+                                            <input class="form-control" name="displacement" id="displacement" placeholder="Displacement" type="text">
+                                            </input>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="bhp">
+                                                Bhp
+                                            </label>
+                                            <input class="form-control" name="bhp" id="bhp" placeholder="Bhp" type="text">
+                                            </input>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="year">
+                                                Year
+                                            </label>
+                                            <input class="form-control" name="year" id="year" placeholder="Year" type="text">
+                                            </input>
+                                        </div>
                                     </div>
-                                    <div class="form-group col-md-4">
-                                      <label for="power">Power</label>
-                                      <input type="text" class="form-control" id="power" placeholder="Power">
-                                    </div>
-                                  </div>
-                                  <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                      <label for="displacement">Displacement</label>
-                                      <input type="text" class="form-control" id="displacement" placeholder="Displacement">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                      <label for="bhp">Bhp</label>
-                                      <input type="text" class="form-control" id="bhp" placeholder="Bhp">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                      <label for="year">Year</label>
-                                      <input type="text" class="form-control" id="year" placeholder="Year">
-                                    </div>
-                                  </div>
-                              </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -129,14 +277,14 @@
                                 <label for="amount">
                                     Ticket Amount
                                 </label>
-                                <input class="form-control" id="amount" name="amount" type="text">
+                                <input class="form-control" id="amount" name="amount" type="number">
                                 </input>
                             </div>
                             <div class="form-group">
                                 <label for="price">
                                     Ticket Price
                                 </label>
-                                <input class="form-control" id="price" name="price" type="text">
+                                <input class="form-control" id="price" name="price" type="number">
                                 </input>
                             </div>
                             <div class="form-group">
@@ -144,9 +292,15 @@
                                     Prize Type
                                 </label>
                                 <select class="form-control" id="prize_type" name="prize_type">
-                                    <option value="">Bike</option>
-                                    <option value="">Car</option>
-                                    <option value="">Cycle</option>
+                                    <option value="">
+                                        Bike
+                                    </option>
+                                    <option value="">
+                                        Car
+                                    </option>
+                                    <option value="">
+                                        Cycle
+                                    </option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -154,24 +308,41 @@
                                     Makers
                                 </label>
                                 <select class="form-control" id="makers" name="makers">
-                                    <option value="">BMW</option>
-                                    <option value="">Ferari</option>
-                                    <option value="">Honda</option>
+                                    <option value="">
+                                        BMW
+                                    </option>
+                                    <option value="">
+                                        Ferari
+                                    </option>
+                                    <option value="">
+                                        Honda
+                                    </option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="c_details">
+                                <label for="end_date">
                                     Competitions End Date
                                 </label>
-                                <input class="form-control" id="c_details" name="c_details" type="date">
+                                <input class="form-control" id="end_date" name="end_date" type="date">
                                 </input>
+                            </div>
+                            <div class="form-group">
+                                <label for="g_image">
+                                    Gallery Image
+                                </label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="g_image">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="f_image">
                                     Featured Image
                                 </label>
                                 <div class="row">
-                                    <div class="col-md">
+                                    <div class="col-md-12">
                                         <div id="f_image">
                                         </div>
                                     </div>
@@ -180,85 +351,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-<<<<<<< HEAD
-            <div class="form-group col-xs-12 col-sm-12 col-md-12 text-center" style="margin-top: 10px;">
-=======
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="amount">
-                        Ticket Amount
-                    </label>
-                    <input class="form-control" id="amount" name="amount" type="text">
-                    </input>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="price">
-                        Ticket Price
-                    </label>
-                    <input class="form-control" id="price" name="price" type="text">
-                    </input>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="p_details">
-                        Prize Details
-                    </label>
-                    <input class="form-control" id="p_details" name="p_details" type="text">
-                    </input>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="c_details">
-                        Competitions Details
-                    </label>
-                    <input class="form-control" id="c_details" name="c_details" type="text">
-                    </input>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="p_details">
-                        Competitions Create Date
-                    </label>
-                    <input class="form-control" id="p_details" name="p_details" type="date">
-                    </input>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="c_details">
-                        Competitions End Date
-                    </label>
-                    <input class="form-control" id="c_details" name="c_details" type="date">
-                    </input>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="f_image">
-                        Featured Image
-                    </label>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="f_image">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="g_image">
-                        Gallery Image
-                    </label>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="g_image">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-xs-12 col-sm-12 col-md-12 text-center">
->>>>>>> ab1c24099abc97c3e06ef302327cf8f48ed13211
-                <button class="btn btn-success" type="submit">
+                <button class="btn btn-success" style="margin-top: 15px;" type="submit">
                     Submit
                 </button>
             </div>
@@ -283,13 +376,9 @@
     $(document).ready(function(){
         $("#g_image").spartanMultiImagePicker({
             fieldName:        'g_image[]',
-            maxCount:         5,
+            maxCount:         3,
             rowHeight:        '100px',
-<<<<<<< HEAD
-            groupClassName:   'col-md-2 col-sm-2 col-xs-4 photo-left',
-=======
             groupClassName:   'col-md-4 col-sm-4 col-xs-6 photo-left',
->>>>>>> ab1c24099abc97c3e06ef302327cf8f48ed13211
             maxFileSize:      '',
             dropFileLabel : "Drop Here",
             onExtensionErr : function(index, file){
@@ -305,11 +394,7 @@
             fieldName:        'f_image',
             maxCount:         1,
             rowHeight:        '100px',
-<<<<<<< HEAD
-            groupClassName:   'col-md-6 col-sm-6 col-xs-6',
-=======
             groupClassName:   'col-md-4 col-sm-4 col-xs-6',
->>>>>>> ab1c24099abc97c3e06ef302327cf8f48ed13211
             maxFileSize:      '',
             dropFileLabel : "Drop Here",
             onExtensionErr : function(index, file){

@@ -120,24 +120,22 @@
                             {{ date('d-M-Y', strtotime($user->created_at)) }}
                         </td>
                         <td>
-                            {{-- <a class="admin-actionbtn" href="{{ route('users.show',$user->id) }}">
-                                <i aria-hidden="true" class="fa fa-eye fa-lg">
-                                </i>
-                            </a> --}}
                             @can('user-edit')
                             <a class="admin-actionbtn" href="{{ route('users.edit',$user->id) }}">
                                 <i class="far fa-edit fa-lg">
                                 </i>
                             </a>
                             @endcan
-                @can('user-delete')
-                    {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
+                            @if($user->user_type != 'Admin')
+                            @can('user-delete')
+                            {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
                             <button class="admin-actionbtn" type="submit">
                                 <i class="fas fa-trash-alt fa-lg">
                                 </i>
                             </button>
                             {!! Form::close() !!}
-                @endcan
+                            @endcan
+                            @endif
                         </td>
                     </tr>
                     @endforeach

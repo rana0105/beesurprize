@@ -19,6 +19,7 @@
   @yield('content')
 
   @include('frontend.partial.footer')
+  @include('frontend.partial.modal')
   @include('frontend.partial.script')
   @yield('script')
 </body>

@@ -49,7 +49,7 @@ class TicketController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('backend.ticket.suspend');
     }
 
     /**
@@ -60,7 +60,7 @@ class TicketController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('backend.ticket.edit');
     }
 
     /**
@@ -97,4 +97,8 @@ class TicketController extends Controller
         return view('backend.ticket.upcomingCompetitionCreate');
     }
 
+    public function toLive()
+    {
+        return view('backend.ticket.tolive');
+    }
 }

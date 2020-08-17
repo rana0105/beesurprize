@@ -187,11 +187,16 @@ body {
               </div>
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
               <hr class="my-4">
-              <a href="{{ route('register') }}" class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Register</a>
+              {{-- <a href="{{ route('register') }}" class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Register</a> --}}
 
-              <a href="{{ url('/') }}" class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Home</a>
+              {{-- <a href="{{ url('/') }}" class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Home</a> --}}
               {{-- <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
               <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button> --}}
+              {{-- @if (Route::has('password.request'))
+                  <a class="btn btn-link" href="{{ route('password.request') }}">
+                      {{ __('Forgot Your Password?') }}
+                  </a>
+              @endif --}}
             </form>
           </div>
         </div>

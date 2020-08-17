@@ -44,9 +44,19 @@ class UserController extends Controller
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
-    public function winnerList() 
+    public function winnerList()
     {
         return view('backend.users.winnerList');
+    }
+
+    public function suspend()
+    {
+        return view('backend.users.suspend');
+    }
+
+    public function banUnban()
+    {
+        return view('backend.users.ban');
     }
     /**
      * Show the form for creating a new resource.
@@ -55,7 +65,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name', 'name')->all();
+        $roles = Role::where('name', '!=', 'Admin')->pluck('name', 'name')->all();
         return view('backend.users.create', compact('roles'));
     }
 
@@ -122,10 +132,11 @@ class UserController extends Controller
     public function edit($id)
     {
         $user     = User::find($id);
-        $roles    = Role::pluck('name', 'name')->all();
+        $roles    = Role::where('name', '!=', 'Admin')->pluck('name', 'name')->all();
+        $aroles    = Role::where('name', '=', 'Admin')->pluck('name', 'name')->all();
         $userRole = $user->roles->pluck('name', 'name')->all();
 
-        return view('backend.users.edit', compact('user', 'roles', 'userRole'));
+        return view('backend.users.edit', compact('user', 'roles', 'aroles', 'userRole'));
     }
 
     /**
@@ -180,7 +191,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        toastr()->danger('User deleted successfully');
+        toastr()->error('User deleted successfully');
         return redirect()->route('users.index')
             ->with('success', 'User deleted successfully');
     }

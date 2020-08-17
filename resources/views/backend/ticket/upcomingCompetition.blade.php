@@ -18,6 +18,7 @@
               <th>Contest No</th>
               <th>Amount</th>
               <th>Price</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -28,6 +29,7 @@
               <th>Contest No</th>
               <th>Amount</th>
               <th>Price</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </tfoot>
@@ -36,16 +38,19 @@
             <tr>
               <td>{{ ++$key }}</td>
               <td>{{ $blog->title }}</td>
-              <td>{{ $blog->title }}</td>
-              <td>{!! $blog->detail !!}</td>
-              <td>{{ date('d-M-Y', strtotime($blog->created_at)) }}</td>
+              <td>T20</td>
+              <td>200</td>
+              <td>11</td>
+              <td>Suspend</td>
               <td>
-                <a class="admin-actionbtn" href="{{ route('blogs.show',$blog->id) }}"><i class="fa fa-eye fa-lg" aria-hidden="true"></i></a>
                 @can('blog-edit')
-                    <a class="admin-actionbtn" href="{{ route('blogs.edit',$blog->id) }}"><i class="far fa-edit fa-lg"></i></a>
+                    <a class="admin-actionbtn" href="{{ route('to-live-competition',$blog->id) }}">To Live</a>
+                @endcan
+                @can('blog-edit')
+                    <a class="admin-actionbtn" href="{{ route('live-competition.edit',$blog->id) }}"><i class="far fa-edit fa-lg"></i></a>
                 @endcan
                 @can('blog-delete')
-                    {!! Form::open(['method' => 'DELETE','route' => ['blogs.destroy', $blog->id],'style'=>'display:inline']) !!}
+                    {!! Form::open(['method' => 'DELETE','route' => ['live-competition.destroy', $blog->id],'style'=>'display:inline']) !!}
                       <button type="submit" class="admin-actionbtn"><i class="fas fa-trash-alt fa-lg"></i></button> 
                     {!! Form::close() !!}
                 @endcan

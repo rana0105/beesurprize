@@ -1,5 +1,4 @@
-<!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('dashboard') }}">
@@ -31,20 +30,23 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            @can('role-list')
+            {{-- @can('role-list')
             <a class="collapse-item" href="{{ route('roles.index') }}">Roles</a>
             @endcan
             @can('permission-list')
             <a class="collapse-item" href="{{ route('permissions.index') }}">Permisions</a>
-            @endcan
-            {{-- @can('vendor-list')
-            <a class="collapse-item" href="javascript:void(0);">Vendors</a>
             @endcan --}}
             @can('user-list')
-            <a class="collapse-item" href="{{ route('users.index') }}">All Users</a>
+            <a class="collapse-item" href="{{ route('users.index') }}">Users</a>
             @endcan
             @can('user-list')
-            <a class="collapse-item" href="{{ route('members') }}">Members</a>
+            <a class="collapse-item" href="{{ route('members') }}">Active Customer</a>
+            @endcan
+            @can('user-list')
+            <a class="collapse-item" href="{{ route('suspend-user') }}">Suspend Customer</a>
+            @endcan
+            @can('user-list')
+            <a class="collapse-item" href="{{ route('banunban') }}">Banned Customer</a>
             @endcan
             @can('user-list')
             <a class="collapse-item" href="{{ route('winner-list') }}">Winner List</a>
@@ -82,6 +84,17 @@
       <hr class="sidebar-divider">
       <li class="nav-item">
         @can('blog-list')
+        <a class="nav-link collapsed" href="{{ route('suscompetitionlist') }}">
+          <i class="fas fa-ticket-alt"></i>
+          <span>Suspend Competition</span>
+        </a>
+        @endcan
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+      <li class="nav-item">
+        @can('blog-list')
         <a class="nav-link collapsed" href="{{ route('customer-testmonial') }}">
           <i class="fas fa-ticket-alt"></i>
           <span>Customer Testmonial</span>
@@ -91,13 +104,56 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider">
-      {{-- <li class="nav-item">
+      <li class="nav-item">
         @can('blog-list')
-        <a class="nav-link collapsed" href="{{ route('blogs.index') }}">
+        <a class="nav-link collapsed" href="{{ route('email-template') }}">
+          <i class="fas fa-ticket-alt"></i>
+          <span>Email Template</span>
+        </a>
+        @endcan
+      </li>
+
+      <!-- Divider -->
+      {{-- <hr class="sidebar-divider">
+      <li class="nav-item">
+        @can('blog-list')
+        <a class="nav-link collapsed" href="{{ route('mcqlist') }}">
           <i class="fab fa-blogger-b"></i>
-          <span>Blog List</span>
+          <span>MCQ List</span>
         </a>
         @endcan
       </li> --}}
+
+      <hr class="sidebar-divider">
+      <li class="nav-item">
+        @can('blog-list')
+        <a class="nav-link collapsed" href="{{ route('competitionlist') }}">
+          <i class="fab fa-blogger-b"></i>
+          <span>Success Members</span>
+        </a>
+        @endcan
+      </li>
+      {{-- <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo1" aria-expanded="true" aria-controls="collapseTwo1">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Competition</span>
+        </a>
+        <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            @can('blog-list')
+            <a class="nav-link collapsed collapse-item" href="{{ route('competitionlist') }}">
+              <i class="fab fa-blogger-b"></i>
+              <span>Active Competition</span>
+            </a>
+            @endcan
+            @can('blog-list')
+            <a class="nav-link collapsed collapse-item" href="{{ route('suscompetitionlist') }}">
+              <i class="fab fa-blogger-b"></i>
+              <span>Suspend Competition</span>
+            </a>
+            @endcan
+          </div>
+        </div>
+      </li> --}}
     </ul>
-    <!-- End of Sidebar -->
+    <!-- End of Sidebar
