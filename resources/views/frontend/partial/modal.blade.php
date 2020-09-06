@@ -57,22 +57,53 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">open free account</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><img src="img/close.png"></span>
+                    <span aria-hidden="true"><img src="{{ asset('frontend/img/close.png') }}"></span>
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
+                    <div class="form-group">
+                        <label>NAME</label>
+                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label>USERNAME</label>
+                        <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                        @error('username')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                     <div class="form-group">
                         <label>EMAIL</label>
-                        <input type="email" class="form-control" placeholder="Enter your email">
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>PASSWORD</label>
-                        <input type="text" class="form-control" placeholder="Password">
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>CONFIRM PASSWORD</label>
-                        <input type="text" class="form-control" placeholder="Password">
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                     </div>
                     <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" id="agree-terms" required="">
@@ -99,7 +130,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><img src="img/close.png"></span>
+                    <span aria-hidden="true"><img src="{{ asset('frontend/img/close.png') }}"></span>
                 </button>        
                     <!-- 16:9 aspect ratio -->
                 <div class="embed-responsive embed-responsive-16by9">
@@ -110,63 +141,7 @@
     </div>
 </div>
 
-<!--------- Ticket select modal --------->
-<div class="modal" id="ticketSelectModal" tabindex="-1" role="dialog" aria-labelledby="ticketSelectModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="ticketSelectModalLabel">choose your ticket</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><img src="img/close.png"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <a href="#" class="default-btn"><i class="fas fa-random"></i> Select randomly</a>
-                <span class="quantity-title">Quantity</span>
-                <div class="range-wrap">
-                    <input type="range" class="range">
-                    <output class="bubble"></output>
-                </div>
-                <a href="#" class="default-btn"><i class="far fa-trash-alt"></i> Remove ticket</a>
-                <div class="ticket-number">
-                    <div class="item">11</div>
-                    <div class="item">12</div>
-                    <div class="item">12</div>
-                    <div class="item">12</div>
-                    <div class="item">12</div>
-                    <div class="item">12</div>
-                    <div class="item">12</div>
-                </div>
-                <div class="ticket-number-list">
-                    <button class="btn">1</button>
-                    <button class="btn">2</button>
-                    <button class="btn">3</button>
-                    <button class="btn">4</button>
-                    <button class="btn">5</button>
-                    <button class="btn">6</button>
-                    <button class="btn">7</button>
-                    <button class="btn">8</button>
-                    <button class="btn">9</button>
-                    <button class="btn">10</button>
-                    <button class="btn">11</button>
-                    <button class="btn">12</button>
-                    <button class="btn">13</button>
-                    <button class="btn">14</button>
-                    <button class="btn">15</button>
-                    <button class="btn">16</button>
-                    <button class="btn">17</button>
-                    <button class="btn">18</button>
-                    <button class="btn">19</button>
-                    <button class="btn">20</button>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <a href="contest.php" class="btn default-btn">Continue Shopping</a>
-                <a href="cart.php" class="btn btn-ticket">Go to Cart</a>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <!--------- Games rules --------->
 <div class="modal" id="gameRulesModal" tabindex="-1" role="dialog" aria-labelledby="gameRulesModalLabel" aria-hidden="true">
@@ -175,7 +150,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="gameRulesModalLabel">How to play</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><img src="img/close.png"></span>
+                    <span aria-hidden="true"><img src="{{ asset('frontend/img/close.png') }}"></span>
                 </button>
             </div>
             <div class="modal-body">
@@ -189,62 +164,6 @@
     </div>
 </div>
 
-<!--------- Question modal --------->
-<div class="modal" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="questionModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="questionModalLabel">Select the answer</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><img src="img/close.png"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-3 col-sm-12">
-                            <h6>Which of these car brand doesn't currently manufacture SUV?</h6>
-                        </div>
-                        <div class="col-lg-9 col-sm-12">
-                            <form method="POST" action="check-out.php">
-                                <div class="mcq-div">
-                                    <div class="imageandtext image_grid">
-                                        <label for="selimg1">
-                                            <img src="http://yaitisme.com/images/getImage.jpg" class="img-thumbnail">
-                                        </label>
-                                        <input type="checkbox" name="selimg" id="selimg1">
-                                        <div class="caption">
-                                            <p>Painting</p>
-                                        </div>
-                                    </div>
-                                    <div class="imageandtext image_grid">
-                                        <label for="selimg2">
-                                            <img src="http://yaitisme.com/images/getImage.jpg" class="img-thumbnail">
-                                        </label>
-                                        <input type="checkbox" name="selimg" id="selimg2">
-                                        <div class="caption">
-                                            <p>Photography</p>
-                                        </div>
-                                    </div>
-                                    <div class="imageandtext image_grid">
-                                        <label for="selimg3">
-                                            <img src="http://yaitisme.com/images/getImage.jpg" class="img-thumbnail">
-                                        </label>
-                                        <input type="checkbox" name="selimg" id="selimg3">
-                                        <div class="caption">
-                                            <p>Photography</p>
-                                        </div>
-                                    </div>
-                                    <button class="btn default-btn">Confirm</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!--------- Upcoming contest answer modal --------->
 <div class="modal" id="answerModal" tabindex="-1" role="dialog" aria-labelledby="answerModalTitle" aria-hidden="true">
@@ -253,11 +172,11 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="answerModalTitle">Modal title</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><img src="img/close.png"></span>
+                    <span aria-hidden="true"><img src="{{ asset('frontend/img/close.png') }}"></span>
                 </button>
             </div>
             <div class="modal-body">
-                <img src="img/car.png" class="img-fluid">
+                <img src="{{ asset('frontend/img/car.png') }}" class="img-fluid">
             </div>
         </div>
     </div>
@@ -270,7 +189,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="pollModalTitle">Give your opinion</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><img src="img/close.png"></span>
+                    <span aria-hidden="true"><img src="{{ asset('frontend/img/close.png') }}"></span>
                 </button>
             </div>
             <div class="modal-body">
@@ -290,6 +209,28 @@
                         <button class="btn default-btn">Send Opinion</button>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--------- Ticket edit modal --------->
+<div class="modal" id="ticketEditMlllodal" tabindex="-1" role="dialog" aria-labelledby="ticketEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ticketEditModalLabel">choose your ticket</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><img src="{{ asset('frontend/img/close.png') }}"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input class="form-control getVal" type="text" name="" id="tId" value="">\
+                <edit-ticket :ticket-id="()=> getElementById(tId).value()"></edit-ticket>
+            </div>
+            <div class="modal-footer">
+                <a href="{{ route('live.contest') }}" class="btn default-btn">Continue Shopping</a>
+                <a href="{{ route('cart') }}" class="btn btn-ticket">Go to Cart</a>
             </div>
         </div>
     </div>

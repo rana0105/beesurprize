@@ -15,9 +15,10 @@
             <tr>
               <th>#</th>
               <th>Title</th>
-              <th>Contest No</th>
-              <th>Amount</th>
+              <th>Prize Type</th>
+              <th>Markers</th>
               <th>Price</th>
+              <th>Start Date</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -26,31 +27,33 @@
             <tr>
               <th>#</th>
               <th>Title</th>
-              <th>Contest No</th>
-              <th>Amount</th>
+              <th>Prize Type</th>
+              <th>Markers</th>
               <th>Price</th>
+              <th>Start Date</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
           </tfoot>
           <tbody>
-            @foreach ($blogs as $key => $blog)
+            @foreach ($upcomingcontests as $key => $upcomingcontest)
             <tr>
               <td>{{ ++$key }}</td>
-              <td>{{ $blog->title }}</td>
-              <td>T20</td>
-              <td>200</td>
-              <td>11</td>
+              <td>{{ $upcomingcontest->title }}</td>
+              <td>{{ $upcomingcontest->prize_type }}</td>
+              <td>{{ $upcomingcontest->makers }}</td>
+              <td>{{ $upcomingcontest->price }}</td>
+              <td>{{ date('Y-m-d H:i:s A', strtotime($upcomingcontest->start_date)) }}</td>
               <td>Suspend</td>
               <td>
                 @can('blog-edit')
-                    <a class="admin-actionbtn" href="{{ route('to-live-competition',$blog->id) }}">To Live</a>
+                    <a class="admin-actionbtn" href="{{ route('to-live-competition',$upcomingcontest->id) }}">To Live</a>
                 @endcan
                 @can('blog-edit')
-                    <a class="admin-actionbtn" href="{{ route('live-competition.edit',$blog->id) }}"><i class="far fa-edit fa-lg"></i></a>
+                    <a class="admin-actionbtn" href="{{ route('live-competition.edit',$upcomingcontest->id) }}"><i class="far fa-edit fa-lg"></i></a>
                 @endcan
                 @can('blog-delete')
-                    {!! Form::open(['method' => 'DELETE','route' => ['live-competition.destroy', $blog->id],'style'=>'display:inline']) !!}
+                    {!! Form::open(['method' => 'DELETE','route' => ['live-competition.destroy', $upcomingcontest->id],'style'=>'display:inline']) !!}
                       <button type="submit" class="admin-actionbtn"><i class="fas fa-trash-alt fa-lg"></i></button> 
                     {!! Form::close() !!}
                 @endcan

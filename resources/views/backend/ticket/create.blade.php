@@ -95,6 +95,9 @@
                                             <input class="form-control" id="ans_a" name="ans_a" type="text">
                                             </input>
                                         </div>
+                                        <label class="col-sm-2 col-form-label">
+                                            <input class="form-check-input" type="radio" name="correct_a" value="A">
+                                        </label>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label" for="ans_b">
@@ -104,6 +107,9 @@
                                             <input class="form-control" id="ans_b" name="ans_b" type="text">
                                             </input>
                                         </div>
+                                        <label class="col-sm-2 col-form-label">
+                                            <input class="form-check-input" type="radio" name="correct_a" value="B">
+                                        </label>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label" for="ans_c">
@@ -113,6 +119,9 @@
                                             <input class="form-control" id="ans_c" name="ans_c" type="text">
                                             </input>
                                         </div>
+                                        <label class="col-sm-2 col-form-label">
+                                            <input class="form-check-input" type="radio" name="correct_a" value="C">
+                                        </label>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label" for="ans_d">
@@ -122,27 +131,9 @@
                                             <input class="form-control" id="ans_d" name="ans_d" type="text">
                                             </input>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" for="cor_ans">
-                                            Select Ans
+                                        <label class="col-sm-2 col-form-label">
+                                            <input class="form-check-input" type="radio" name="correct_a" value="D">
                                         </label>
-                                        <div class="col-sm-6">
-                                            <select name="cor_ans" class="form-control" id="makers" name="makers">
-                                                <option value="A">
-                                                    A
-                                                </option>
-                                                <option value="B">
-                                                    B
-                                                </option>
-                                                <option value="C">
-                                                    C
-                                                </option>
-                                                <option value="D">
-                                                    D
-                                                </option>
-                                            </select>
-                                        </div>
                                     </div>
                                 </div>
                                 <div aria-labelledby="pills-profile-tab" class="tab-pane fade" id="pills-profile" role="tabpanel">
@@ -154,6 +145,9 @@
                                             <input class="form-control" id="ans_ai" name="ans_ai" type="file">
                                             </input>
                                         </div>
+                                        <label class="col-sm-2 col-form-label">
+                                            <input class="form-check-input" type="radio" name="correct_a" value="A">
+                                        </label>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label" for="ans_bi">
@@ -163,6 +157,9 @@
                                             <input class="form-control" id="ans_bi" name="ans_bi" type="file">
                                             </input>
                                         </div>
+                                        <label class="col-sm-2 col-form-label">
+                                            <input class="form-check-input" type="radio" name="correct_a" value="B">
+                                        </label>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label" for="ans_ci">
@@ -172,6 +169,9 @@
                                             <input class="form-control" id="ans_ci" name="ans_ci" type="file">
                                             </input>
                                         </div>
+                                        <label class="col-sm-2 col-form-label">
+                                            <input class="form-check-input" type="radio" name="correct_a" value="C">
+                                        </label>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label" for="ans_di">
@@ -181,27 +181,9 @@
                                             <input class="form-control" id="ans_di" name="ans_di" type="file">
                                             </input>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" for="cor_ansi">
-                                            Select Ans
+                                        <label class="col-sm-2 col-form-label">
+                                            <input class="form-check-input" type="radio" name="correct_a" value="D">
                                         </label>
-                                        <div class="col-sm-6">
-                                            <select name="cor_ansi" class="form-control" id="makers" name="makers">
-                                                <option value="A">
-                                                    A
-                                                </option>
-                                                <option value="B">
-                                                    B
-                                                </option>
-                                                <option value="C">
-                                                    C
-                                                </option>
-                                                <option value="D">
-                                                    D
-                                                </option>
-                                            </select>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -292,15 +274,17 @@
                                     Prize Type
                                 </label>
                                 <select class="form-control" id="prize_type" name="prize_type">
-                                    <option value="">
+                                    <option value="Bike">
                                         Bike
                                     </option>
-                                    <option value="">
+                                    <option value="Car">
                                         Car
                                     </option>
-                                    <option value="">
+                                    <option value="Cycle">
                                         Cycle
                                     </option>
+                                    <option value="Desktop">Desktop</option>
+                                    <option value="Money">Money</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -308,22 +292,24 @@
                                     Makers
                                 </label>
                                 <select class="form-control" id="makers" name="makers">
-                                    <option value="">
+                                    <option value="BMW">
                                         BMW
                                     </option>
-                                    <option value="">
+                                    <option value="Ferari">
                                         Ferari
                                     </option>
-                                    <option value="">
+                                    <option value="Honda">
                                         Honda
                                     </option>
+                                    <option value="Yamaha">Yamaha</option>
+                                    <option value="Suzuki">Suzuki</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="end_date">
                                     Competitions End Date
                                 </label>
-                                <input class="form-control" id="end_date" name="end_date" type="date">
+                                <input class="form-control" id="end_date" name="end_date" type="datetime-local">
                                 </input>
                             </div>
                             <div class="form-group">
@@ -367,11 +353,15 @@
 </style>
 @endsection
 @section('script')
+
 <script src="{{ asset('js/spartan-multi-image-picker-min.js') }}">
 </script>
 <script>
     tinymce.init({
-     selector: 'textarea#detail'
+     selector: 'textarea#p_details'
+   });
+    tinymce.init({
+     selector: 'textarea#c_details'
    });
     $(document).ready(function(){
         $("#g_image").spartanMultiImagePicker({
@@ -409,3 +399,5 @@
     });
 </script>
 @endsection
+
+            

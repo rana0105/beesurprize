@@ -1554,6 +1554,7 @@ body {
     border-radius: 0;
     background-color: transparent;
     padding-left: 0;
+    color: #fff;
 }
 .modal-body form .form-control:focus {
     color: #fff;

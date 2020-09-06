@@ -8,6 +8,7 @@ use DB;
 use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -194,5 +195,88 @@ class UserController extends Controller
         toastr()->error('User deleted successfully');
         return redirect()->route('users.index')
             ->with('success', 'User deleted successfully');
+    }
+
+    public function userProfile() 
+    {
+        $user = Auth::user();
+        return view('frontend.pages.user-profile', compact('user'));
+    }
+
+    public function loadUser($id) 
+    {
+        $user = Auth::user();
+        return response()->json($user);
+    }
+
+    public function personalIfo(Request $request) 
+    {
+        $user = User::find($request->id);
+        $user = $user->update($request->except('id'));
+        return redirect()->route('userProfile');
+    }
+
+    public function settingIfo(Request $request) 
+    {
+        $user = User::find($request->id);
+        $user = $user->update($request->except('id'));
+        return redirect()->route('userProfile');
+    }
+
+    public function contactInfo(Request $request) 
+    {
+        $this->validate($request, [
+            'email'    => 'required|email|unique:users,email,' . $request->id
+        ]);
+        $user = User::find($request->id);
+        $user = $user->update($request->except('id'));
+        return redirect()->route('userProfile');
+    }
+
+    public function passwordInfo(Request $request) 
+    {
+        $this->validate($request, [
+            'old_password' => 'required',
+            'new_password' => 'required|min:8',
+            'password_confirmation' => 'required|same:new_password',
+        ]);
+
+
+        $data = $request->old_password;
+ 
+        $user = User::find($request->id);
+        if(!\Hash::check($data, $user->password)){
+             return back()
+                        ->with('error','The specified password does not match the database password');
+        }else{
+           $user->password = bcrypt($request->new_password);
+
+           $user->save();
+        }
+        return redirect()->route('userProfile');
+    }
+
+    public function postPasswordupdate(Request $request)
+    {
+
+        $this->validate($request, [
+            'old_password' => 'required',
+            'new_password' => 'required|min:6',
+            'password_confirmation' => 'required|same:new_password',
+        ]);
+
+
+        $data = $request->old_password;
+ 
+        $user = $this->user();
+        if(!\Hash::check($data, $user->password)){
+             return back()
+                        ->with('error','The specified password does not match the database password');
+        }else{
+           $user->password = bcrypt($request->new_password);
+
+           $user->save();
+        }
+        return redirect()->route('freelancer.profile.show')->with('successp', 'User password have been changed successfully !');
     }
 }

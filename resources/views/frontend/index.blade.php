@@ -21,7 +21,7 @@
           </span>
         </div>
         <div>
-          <a class="nav-link btn btn-ticket" href="upcoming-contest.php">
+          <a class="nav-link btn btn-ticket" href="{{ route('live.contest') }}">
               <img src="{{ asset('frontend/img/ticket-icon.png') }}">
                   buy tickets
               </img>
@@ -96,41 +96,50 @@
                   </small>
               </div>
           </div>
+          @if(sizeof($curentcontests)> 0)
+          @foreach($curentcontests as $curentcontest)
           <div class="col-lg-4 col-md-6 col-sm-12">
               <div class="current-item">
-                  <a href="contest-detail.php">
+                  <a href="{{ route('live.contest.detail', $curentcontest->id) }}">
                       <div class="prize-img">
-                          <img src="{{ asset('frontend/img/cars.png') }}">
-                          </img>
+                          <img src="{{ asset('uploads/livecontest/'. $curentcontest->f_image) }}">
                       </div>
                   </a>
                   <div class="contest-no">
                       Contest No:
                       <br>
                           <span>
-                              B2T
+                              {{ $curentcontest->contest_no }}
                           </span>
                       </br>
                   </div>
+                  @php
+                  $date = $curentcontest->end_date;
+                  $ed = date('Y-m-d', strtotime($date));
+                  $currenDate = date('Y-m-d');
+                  $currenDate = \Carbon\Carbon::createFromFormat('Y-m-d', $currenDate);
+                  $ed = \Carbon\Carbon::createFromFormat('Y-m-d', $ed);
+                  $diff = $currenDate->diffInDays($ed);
+                  @endphp
                   <div class="ticket-detail">
-                      <a class="prize-name" href="contest-detail.php">
-                          The Breeze  Zodiac IX
+                      <a class="prize-name" href="{{ route('live.contest.detail', $curentcontest->id) }}">
+                          {{ $curentcontest->title }}
                       </a>
                       <p class="ticket-price">
-                          $3.95
+                          ${{ $curentcontest->price }}
                       </p>
                       <hr>
                           <div class="ticket-info">
                               <i class="far fa-clock">
                               </i>
-                              5d
+                              {{ $diff }}d
                               <span class="bar">
                                   |
                               </span>
                               <span class="float-right">
                                   <i class="fas fa-ticket-alt">
                                   </i>
-                                  9805
+                                  {{ $curentcontest->amount }}
                                   <b>
                                       Remaining
                                   </b>
@@ -140,103 +149,21 @@
                   </div>
               </div>
           </div>
+          @endforeach
+          @else
           <div class="col-lg-4 col-md-6 col-sm-12">
-              <div class="current-item">
-                  <a href="contest-detail.php">
-                      <div class="prize-img">
-                          <img src="{{ asset('frontend/img/motorcycle.png') }}">
-                          </img>
-                      </div>
-                  </a>
-                  <div class="contest-no">
-                      Contest No:
-                      <br>
-                          <span>
-                              B2T
-                          </span>
-                      </br>
-                  </div>
-                  <div class="ticket-detail">
-                      <a class="prize-name" href="contest-detail.php">
-                          The Breeze  Zodiac IX
-                      </a>
-                      <p class="ticket-price">
-                          $3.95
-                      </p>
-                      <hr>
-                          <div class="ticket-info">
-                              <i class="far fa-clock">
-                              </i>
-                              5d
-                              <span class="bar">
-                                  |
-                              </span>
-                              <span class="float-right">
-                                  <i class="fas fa-ticket-alt">
-                                  </i>
-                                  9805
-                                  <b>
-                                      Remaining
-                                  </b>
-                              </span>
-                          </div>
-                      </hr>
-                  </div>
-              </div>
+            No Data Found!
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-12">
-              <div class="current-item">
-                  <a href="contest-detail.php">
-                      <div class="prize-img">
-                          <img src="{{ asset('frontend/img/smartphone.png') }}">
-                          </img>
-                      </div>
-                  </a>
-                  <div class="contest-no">
-                      Contest No:
-                      <br>
-                          <span>
-                              X9U
-                          </span>
-                      </br>
-                  </div>
-                  <div class="ticket-detail">
-                      <a class="prize-name" href="contest-detail.php">
-                          The Breeze  Zodiac IX
-                      </a>
-                      <p class="ticket-price">
-                          $3.95
-                      </p>
-                      <hr>
-                          <div class="ticket-info">
-                              <i class="far fa-clock">
-                              </i>
-                              5d
-                              <span class="bar">
-                                  |
-                              </span>
-                              <span class="float-right">
-                                  <i class="fas fa-ticket-alt">
-                                  </i>
-                                  9805
-                                  <b>
-                                      Remaining
-                                  </b>
-                              </span>
-                          </div>
-                      </hr>
-                  </div>
-              </div>
-          </div>
+          @endif
           <div class="more-contest">
-              <a class="btn btn-more" href="#">
+              <a class="btn btn-more" href="{{ route('live.contest') }}">
                   browse more
               </a>
           </div>
       </div>
   </div>
 </section>
-<section id="latest-winners">
+<section id="latest-winners" style="display: none">
   <div class="background-img">
       <div class="bg1">
       </div>
@@ -1737,7 +1664,7 @@
       </div>
   </div>
 </section>
-<section id="customer-feedback">
+<section id="customer-feedback" style="display: none">
   <div class="container">
       <div class="row">
           <div class="col-lg-12">
@@ -1841,7 +1768,7 @@
                                       <p>
                                           Check out our FAQs to see if we can help you out.
                                       </p>
-                                      <a class="btn support-btn" href="faq.php">
+                                      <a class="btn support-btn" href="{{ route('faq') }}">
                                           FAQs & Help
                                       </a>
                                   </div>

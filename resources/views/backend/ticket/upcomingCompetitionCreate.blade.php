@@ -39,7 +39,7 @@
             </br>
         </div>
         @endif
-        <form action="{{ route('upcoming-competition.create') }}" enctype="multipart/form-data" file="true" method="POST">
+        <form action="{{ route('upcoming-competition.store') }}" enctype="multipart/form-data" file="true" method="POST">
             @csrf
             <div class="row">
                 <div class="col-md-8">
@@ -67,10 +67,10 @@
                                 </textarea>
                             </div>
                             <div class="form-group">
-                                <label for="title">
+                                <label for="question">
                                     Question
                                 </label>
-                                <input class="form-control" id="title" name="title" type="text">
+                                <input class="form-control" id="question" name="question" type="text">
                                 </input>
                             </div>
                             <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
@@ -88,120 +88,102 @@
                             <div class="tab-content" id="pills-tabContent">
                                 <div aria-labelledby="pills-home-tab" class="tab-pane fade show active" id="pills-home" role="tabpanel">
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" for="title">
-                                            Ans D
+                                        <label class="col-sm-2 col-form-label" for="ans_a">
+                                            Ans A
                                         </label>
                                         <div class="col-sm-6">
-                                            <input class="form-control" id="title" name="title" type="text">
+                                            <input class="form-control" id="ans_a" name="ans_a" type="text">
                                             </input>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" for="title">
-                                            Ans C
+                                        <label class="col-sm-2 col-form-label">
+                                            <input class="form-check-input" type="radio" name="correct_a" value="A">
                                         </label>
-                                        <div class="col-sm-6">
-                                            <input class="form-control" id="title" name="title" type="text">
-                                            </input>
-                                        </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" for="title">
+                                        <label class="col-sm-2 col-form-label" for="ans_b">
                                             Ans B
                                         </label>
                                         <div class="col-sm-6">
-                                            <input class="form-control" id="title" name="title" type="text">
+                                            <input class="form-control" id="ans_b" name="ans_b" type="text">
                                             </input>
                                         </div>
+                                        <label class="col-sm-2 col-form-label">
+                                            <input class="form-check-input" type="radio" name="correct_a" value="B">
+                                        </label>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" for="title">
+                                        <label class="col-sm-2 col-form-label" for="ans_c">
+                                            Ans C
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" id="ans_c" name="ans_c" type="text">
+                                            </input>
+                                        </div>
+                                        <label class="col-sm-2 col-form-label">
+                                            <input class="form-check-input" type="radio" name="correct_a" value="C">
+                                        </label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label" for="ans_d">
                                             Ans D
                                         </label>
                                         <div class="col-sm-6">
-                                            <input class="form-control" id="title" name="title" type="text">
+                                            <input class="form-control" id="ans_d" name="ans_d" type="text">
                                             </input>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" for="title">
-                                            Select Ans
+                                        <label class="col-sm-2 col-form-label">
+                                            <input class="form-check-input" type="radio" name="correct_a" value="D">
                                         </label>
-                                        <div class="col-sm-6">
-                                            <select class="form-control" id="makers" name="makers">
-                                                <option value="">
-                                                    A
-                                                </option>
-                                                <option value="">
-                                                    B
-                                                </option>
-                                                <option value="">
-                                                    C
-                                                </option>
-                                                <option value="">
-                                                    D
-                                                </option>
-                                            </select>
-                                        </div>
                                     </div>
                                 </div>
                                 <div aria-labelledby="pills-profile-tab" class="tab-pane fade" id="pills-profile" role="tabpanel">
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" for="title">
+                                        <label class="col-sm-2 col-form-label" for="ans_ai">
                                             Ans A
                                         </label>
                                         <div class="col-sm-6">
-                                            <input class="form-control" id="title" name="title" type="file">
+                                            <input class="form-control" id="ans_ai" name="ans_ai" type="file">
                                             </input>
                                         </div>
+                                        <label class="col-sm-2 col-form-label">
+                                            <input class="form-check-input" type="radio" name="correct_a" value="A">
+                                        </label>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" for="title">
+                                        <label class="col-sm-2 col-form-label" for="ans_bi">
                                             Ans B
                                         </label>
                                         <div class="col-sm-6">
-                                            <input class="form-control" id="title" name="title" type="file">
+                                            <input class="form-control" id="ans_bi" name="ans_bi" type="file">
                                             </input>
                                         </div>
+                                        <label class="col-sm-2 col-form-label">
+                                            <input class="form-check-input" type="radio" name="correct_a" value="B">
+                                        </label>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" for="title">
+                                        <label class="col-sm-2 col-form-label" for="ans_ci">
                                             Ans C
                                         </label>
                                         <div class="col-sm-6">
-                                            <input class="form-control" id="title" name="title" type="file">
+                                            <input class="form-control" id="ans_ci" name="ans_ci" type="file">
                                             </input>
                                         </div>
+                                        <label class="col-sm-2 col-form-label">
+                                            <input class="form-check-input" type="radio" name="correct_a" value="C">
+                                        </label>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" for="title">
+                                        <label class="col-sm-2 col-form-label" for="ans_di">
                                             Ans D
                                         </label>
                                         <div class="col-sm-6">
-                                            <input class="form-control" id="title" name="title" type="file">
+                                            <input class="form-control" id="ans_di" name="ans_di" type="file">
                                             </input>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" for="title">
-                                            Select Ans
+                                        <label class="col-sm-2 col-form-label">
+                                            <input class="form-check-input" type="radio" name="correct_a" value="D">
                                         </label>
-                                        <div class="col-sm-6">
-                                            <select class="form-control" id="makers" name="makers">
-                                                <option value="">
-                                                    A
-                                                </option>
-                                                <option value="">
-                                                    B
-                                                </option>
-                                                <option value="">
-                                                    C
-                                                </option>
-                                                <option value="">
-                                                    D
-                                                </option>
-                                            </select>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -217,21 +199,21 @@
                                             <label for="mile">
                                                 Miles
                                             </label>
-                                            <input class="form-control" id="mile" placeholder="Mile" type="text">
+                                            <input class="form-control" name="mile" id="mile" placeholder="Mile" type="text">
                                             </input>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="speed">
                                                 Speed
                                             </label>
-                                            <input class="form-control" id="speed" placeholder="Speed" type="text">
+                                            <input class="form-control" name="speed" id="speed" placeholder="Speed" type="text">
                                             </input>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="power">
                                                 Power
                                             </label>
-                                            <input class="form-control" id="power" placeholder="Power" type="text">
+                                            <input class="form-control" name="power" id="power" placeholder="Power" type="text">
                                             </input>
                                         </div>
                                     </div>
@@ -240,21 +222,21 @@
                                             <label for="displacement">
                                                 Displacement
                                             </label>
-                                            <input class="form-control" id="displacement" placeholder="Displacement" type="text">
+                                            <input class="form-control" name="displacement" id="displacement" placeholder="Displacement" type="text">
                                             </input>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="bhp">
                                                 Bhp
                                             </label>
-                                            <input class="form-control" id="bhp" placeholder="Bhp" type="text">
+                                            <input class="form-control" name="bhp" id="bhp" placeholder="Bhp" type="text">
                                             </input>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="year">
                                                 Year
                                             </label>
-                                            <input class="form-control" id="year" placeholder="Year" type="text">
+                                            <input class="form-control" name="year" id="year" placeholder="Year" type="text">
                                             </input>
                                         </div>
                                     </div>
@@ -270,7 +252,7 @@
                                 <label for="price">
                                     Ticket Price
                                 </label>
-                                <input class="form-control" id="price" name="price" type="text">
+                                <input class="form-control" id="price" name="price" type="number">
                                 </input>
                             </div>
                             <div class="form-group">
@@ -278,13 +260,13 @@
                                     Prize Type
                                 </label>
                                 <select class="form-control" id="prize_type" name="prize_type">
-                                    <option value="">
+                                    <option value="Bike">
                                         Bike
                                     </option>
-                                    <option value="">
+                                    <option value="Car">
                                         Car
                                     </option>
-                                    <option value="">
+                                    <option value="Cycle">
                                         Cycle
                                     </option>
                                 </select>
@@ -294,22 +276,22 @@
                                     Makers
                                 </label>
                                 <select class="form-control" id="makers" name="makers">
-                                    <option value="">
+                                    <option value="BMW">
                                         BMW
                                     </option>
-                                    <option value="">
+                                    <option value="Ferari">
                                         Ferari
                                     </option>
-                                    <option value="">
+                                    <option value="Honda">
                                         Honda
                                     </option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="c_details">
+                                <label for="start_date">
                                     Competitions Start Date
                                 </label>
-                                <input class="form-control" id="c_details" name="c_details" type="date">
+                                <input class="form-control" id="start_date" name="start_date" type="datetime-local">
                                 </input>
                             </div>
                             <div class="form-group">
@@ -359,12 +341,15 @@
 </script>
 <script>
     tinymce.init({
-     selector: 'textarea#detail'
+     selector: 'textarea#p_details'
+   });
+    tinymce.init({
+     selector: 'textarea#c_details'
    });
     $(document).ready(function(){
         $("#g_image").spartanMultiImagePicker({
             fieldName:        'g_image[]',
-            maxCount:         5,
+            maxCount:         3,
             rowHeight:        '100px',
             groupClassName:   'col-md-4 col-sm-4 col-xs-4 photo-left',
             maxFileSize:      '',

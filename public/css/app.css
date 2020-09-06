@@ -64,37 +64,10 @@ section {
   display: block;
 }
 
-.admin-actionbtn {
-  margin: 2px;
-}
-
-.custom-btn button {
-    border: none;
-    background: none;
-    margin: 0px;
-    padding: 5px 1px;
-}
-
-.dropdown.no-arrow .dropdown-toggle::after {
-  display: none;
-}
-
-label.sr-only-custom {
-    margin-right: 10px;
-}
-
-img.img.img-fluid.img-custom {
-    margin-top: -3px;
-}
-
-div#navbarResponsive {
-    margin-right: -9%;
-}
-
 body {
   margin: 0;
   font-family: "Nunito", sans-serif;
-  font-size: 13px;
+  font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
   color: #212529;
@@ -1838,7 +1811,7 @@ pre code {
 
 .table th,
 .table td {
-  padding: 6px;
+  padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
 }

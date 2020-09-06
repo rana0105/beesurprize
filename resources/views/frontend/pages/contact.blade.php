@@ -35,14 +35,14 @@
 						<div class="col-lg-6 col-sm-12">
 							<div class="contact-detail">
 								<div>
-									<img src="img/telephone-icon.png"> +0194323656
+									<img src="{{ asset('frontend/img/telephone-icon.png') }}"> +0194323656
 								</div>
 								<div>
-									<img src="img/email.png"> itsumrat@gmail.com
+									<img src="{{ asset('frontend/img/email.png') }}"> itsumrat@gmail.com
 								</div>
 							</div>
 							<div class="support-img">
-								<img src="img/contact-illustration.png">
+								<img src="{{ asset('frontend/img/contact-illustration.png') }}">
 							</div>
 						</div>
 					</div>

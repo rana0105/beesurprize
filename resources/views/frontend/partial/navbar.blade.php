@@ -11,60 +11,19 @@
                 </div>
                 <div class="col-md-6">
                     <div class="top-right">
-                        <span class="total-price">
-                            0.00
-                        </span>
-                        <a href="#">
-                            <img src="{{ asset('frontend/img/cart-icon.png') }}">
-                                <span class="badge">
-                                    02
-                                </span>
-                            </img>
-                        </a>
+                        <price-count></price-count>
                         @if (Route::has('login'))
                             @auth
-                        <li class="nav-item dropdown no-arrow">
-                            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="userDropdown" role="button">
-                                <img class="img img-fluid img-custom" height="35" src="{{ asset('backend/img/admin.png') }}" width="25">
-                                </img>
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div aria-labelledby="userDropdown" class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400">
-                                    </i>
-                                    Profile
+                                <a href="{{ route('userProfile') }}">
+                                    <img src="{{ asset('frontend/img/user.jpg') }}" width="30px" height="30px" style="border-radius: 50%">
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400">
-                                    </i>
-                                    Settings
+                                @else
+                                <a data-target="#staticBackdrop" data-toggle="modal" href="#">
+                                    <img src="{{ asset('frontend/img/login.png') }}">
+                                    </img>
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400">
-                                    </i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider">
-                                </div>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                           document.getElementById('logout-form').submit();">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400">
-                                    </i>
-                                    Logout
-                                </a>
-                                <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                        @else
-                        <a data-target="#staticBackdrop" data-toggle="modal" href="#">
-                            <img src="{{ asset('frontend/img/login.png') }}">
-                            </img>
-                        </a>
-                        @endauth
-                            @endif
+                            @endauth
+                        @endif
                     </div>
                 </div>
             </div>
@@ -113,12 +72,14 @@
                                 <a class="dropdown-item" href="{{ route('how.work') }}">
                                     How Works
                                 </a>
-                                <a class="dropdown-item" href="{{ route('profile') }}">
+                                @auth
+                                <a class="dropdown-item" href="{{ route('userProfile') }}">
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="/">
+                                @endauth
+                                {{-- <a class="dropdown-item" href="/">
                                     404
-                                </a>
+                                </a> --}}
                             </div>
                         </li>
                         <li class="nav-item">
@@ -143,7 +104,7 @@
                         <p>
                             Don't miss your chance.Will you be our next lucky winner?
                         </p>
-                        <a class="btn default-btn" href="contest.php">
+                        <a class="btn default-btn" href="{{ route('live.contest') }}">
                             participate now
                         </a>
                         <a class="video-btn" data-src="https://www.youtube.com/embed/Jfrjeg26Cwk" data-target="#promoVideoModal" data-toggle="modal" href="#">

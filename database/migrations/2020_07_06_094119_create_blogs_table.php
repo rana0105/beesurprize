@@ -18,6 +18,7 @@ class CreateBlogsTable extends Migration
             $table->string('title')->nullable();
             $table->text('detail')->nullable();
             $table->string('blog_image')->nullable();
+            $table->integer('status')->nullable();
             $table->timestamps();
         });
     }

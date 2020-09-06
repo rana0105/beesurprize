@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\WebController\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Model\Backend\Question;
+use App\Model\Backend\WinnerList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
 
 class SettingController extends Controller
@@ -117,7 +120,26 @@ class SettingController extends Controller
 
     public function competitionlist()
     {
-        return view('backend.mcqlist.competitionList');
+        $winnerlists = WinnerList::with('userList', 'questionList')->where('status', 'Won')
+        ->get();
+        return view('backend.mcqlist.competitionList', compact('winnerlists'));
+    }
+
+    public function questionAns(Request $request)
+    {
+        $checkAns = Question::where('id', $request->question_id)->first();
+        if ($checkAns->correct_a == $request->question_ans) {
+            $status = 'Won';
+        }else{
+            $status = 'Loss';
+        }
+        $data = WinnerList::create($request->except('user_id', 'status')+
+                [
+                    'user_id' => Auth::user()->id,
+                    'status' => $status
+                ]);
+        toastr()->success('Quiz test created successfully.');
+        return redirect()->route('checkout');
     }
 
     public function suscompetitionlist()

@@ -22,13 +22,10 @@
                       <th>Member Name</th>
                       <th>Email</th>
                       <th>
-                          Contest Name
+                          Question
                       </th>
                       <th>
-                          Contest No
-                      </th>
-                      <th>
-                          Draw Date
+                          Status
                       </th>
                   </tr>
               </thead>
@@ -40,25 +37,23 @@
                       <th>Member Name</th>
                       <th>Email</th>
                       <th>
-                          Contest Name
+                          Question
                       </th>
                       <th>
-                          Contest No
-                      </th>
-                      <th>
-                          Draw Date
+                          Status
                       </th>
                   </tr>
               </tfoot>
               <tbody>
+                @foreach($winnerlists as $winner)
                   <tr>
                       <td>1</td>
-                      <td>Sumrat</td>
-                      <td>sumrat@gmail.com</td>
-                      <td>Contest is the game</td>
-                      <td>MT20</td>
-                      <td>12-Aug-2020</td>
+                      <td>{{ $winner->userList ? $winner->userList->name : ''}}</td>
+                      <td>{{ $winner->userList ? $winner->userList->email : '' }}</td>
+                      <td>{{ $winner->questionList ? $winner->questionList->question : '' }}</td>
+                      <td>{{ $winner->status}}</td>
                   </tr>
+                  @endforeach
               </tbody>
           </table>
       </div>

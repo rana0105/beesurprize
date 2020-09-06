@@ -12,13 +12,13 @@
                             <label for="imageUpload"><i class="fas fa-camera"></i></label>
                         </div>
                         <div class="avatar-preview">
-                            <div id="imagePreview" style="background-image: url(img/user.jpg);">
+                            <div id="imagePreview" style="background-image: url({{ asset('frontend/img/user.jpg')}})">
                             </div>
                         </div>
                     </div>
                     <div class="profile-name">
-                        <h4>albert ownes</h4>
-                        <small>ID: 112346546</small>
+                        <h4>{{ $user->name }}</h4>
+                        <small>ID: {{ $user->id }}</small>
                     </div>
                 </div>
                 <div class="profile-items">
@@ -28,7 +28,15 @@
                         <a class="nav-link" id="v-pills-myorder-tab" data-toggle="pill" href="#v-pills-myorder" role="tab" aria-controls="v-pills-myorder" aria-selected="false">my order</a>
                         <a class="nav-link" id="v-pills-referalprogram-tab" data-toggle="pill" href="#v-pills-referalprogram" role="tab" aria-controls="v-pills-referalprogram" aria-selected="false">referal program</a>
                         <a class="nav-link" id="v-pills-favticket-tab" data-toggle="pill" href="#v-pills-favticket" role="tab" aria-controls="v-pills-favticket" aria-selected="false">favorite tickets</a>
-                        <a class="nav-link" href="#">log out</a>
+                        <a class="nav-link localStorageClear" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400">
+                            </i>
+                            log out
+                        </a>
+                        <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </div>
                 </div>
 			</div>
@@ -42,7 +50,7 @@
                                     <div class="current-item upcoming-item">
                                         <a href="contest-detail.php">
                                             <div class="prize-img">
-                                                <img src="img/cars.png">
+                                                <img src="{{ asset('frontend/img/cars.png') }}">
                                             </div>
                                         </a>
                                         <div class="contest-name">BT2</div>
@@ -77,7 +85,7 @@
                                     <div class="current-item upcoming-item">
                                         <a href="contest-detail.php">
                                             <div class="prize-img">
-                                                <img src="img/cars.png">
+                                                <img src="{{ asset('frontend/img/cars.png') }}">
                                             </div>
                                         </a>
                                         <div class="contest-name">BT2</div>
@@ -104,7 +112,7 @@
                                     <div class="current-item upcoming-item">
                                         <a href="contest-detail.php">
                                             <div class="prize-img">
-                                                <img src="img/cars.png">
+                                                <img src="{{ asset('frontend/img/cars.png') }}">
                                             </div>
                                         </a>
                                         <div class="contest-name">BT2</div>
@@ -139,7 +147,7 @@
                                     <div class="current-item upcoming-item">
                                         <a href="contest-detail.php">
                                             <div class="prize-img">
-                                                <img src="img/cars.png">
+                                                <img src="{{ asset('frontend/img/cars.png') }}">
                                             </div>
                                         </a>
                                         <div class="contest-name">BT2</div>
@@ -174,7 +182,7 @@
                                     <div class="current-item upcoming-item">
                                         <a href="contest-detail.php">
                                             <div class="prize-img">
-                                                <img src="img/cars.png">
+                                                <img src="{{ asset('frontend/img/cars.png') }}">
                                             </div>
                                         </a>
                                         <div class="contest-name">BT2</div>
@@ -209,7 +217,7 @@
                                     <div class="current-item upcoming-item">
                                         <a href="contest-detail.php">
                                             <div class="prize-img">
-                                                <img src="img/cars.png">
+                                                <img src="{{ asset('frontend/img/cars.png') }}">
                                             </div>
                                         </a>
                                         <div class="contest-name">BT2</div>
@@ -236,7 +244,7 @@
                                     <div class="current-item upcoming-item">
                                         <a href="contest-detail.php">
                                             <div class="prize-img">
-                                                <img src="img/cars.png">
+                                                <img src="{{ asset('frontend/img/cars.png') }}">
                                             </div>
                                         </a>
                                         <div class="contest-name">BT2</div>
@@ -263,7 +271,7 @@
                                     <div class="current-item upcoming-item">
                                         <a href="contest-detail.php">
                                             <div class="prize-img">
-                                                <img src="img/cars.png">
+                                                <img src="{{ asset('frontend/img/cars.png') }}">
                                             </div>
                                         </a>
                                         <div class="contest-name">BT2</div>
@@ -311,26 +319,54 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-personalinfo" role="tabpanel" aria-labelledby="v-pills-personalinfo-tab">
-                        <div class="personal-detail">
-                            <h5>personal details</h5>
-                            <p><span>Name</span>: Alber Ownes</p>
-                            <p><span>Date of Birth</span>: 15-03-1980</p>
-                            <p><span>Address</span>: 8198 Fieldstone Dr.La Crosse, WI 54601</p>
+                        <div class="row personal-detail">
+                            <div class="col-md-6">
+                                <h5>personal details</h5>
+                                <p><span>Name</span>: {{ $user->name }}</p>
+                                <p><span>Date of Birth</span>: {{ $user->dob }}</p>
+                                <p><span>Address</span>: {{ $user->address }}</p>
+                            </div>
+                            <div class="col-md-6" align="right">
+                                <a href="#" class="open_modal" data-toggle="modal" data-id="{{ $user->id }}" data-target="#nameModal"><i class="fa fa-edit" style="color: #fff"></i></a>
+                            </div>
                         </div>
-                        <div class="account-settings">
-                            <h5>account settings</h5>
-                            <p><span>Language</span>: English (UK)</p>
-                            <p><span>Date of Birth</span>: (GMT-06:00) Central America</p>
-                            <p><span>Address</span>: Active</p>
+                        <div class="row account-settings">
+                            <div class="col-md-6">
+                                <h5>account settings</h5>
+                                <p><span>Language</span>: {{ $user->language }}</p>
+                                <p><span>Origion</span>: {{ $user->origion }}</p>
+                                <p><span>Status</span>: 
+                                    @if($user->status == 1)
+                                    Active
+                                    @elseif($user->status == 2)
+                                    Unban
+                                    @else
+                                    Ban
+                                    @endif
+                                </p>
+                            </div>
+                            <div class="col-md-6" align="right">
+                                <a href="#" class="open_modal" data-toggle="modal" data-id="{{ $user->id }}" data-target="#settingModal"><i class="fa fa-edit" style="color: #fff"></i></a>
+                            </div>
                         </div>
-                        <div class="contact-settings">
-                            <h5>contact settings</h5>
-                            <p><span>Email</span>: +8801943869105</p>
-                            <p><span>Mobile</span>: itsumrat@gmail.com</p>
+                        <div class="row contact-settings">
+                            <div class="col-md-6">
+                                <h5>contact settings</h5>
+                                <p><span>Email</span>: {{ $user->email }}</p>
+                                <p><span>Mobile</span>: {{ $user->phone }}</p>
+                            </div>
+                            <div class="col-md-6" align="right">
+                                <a href="#" class="open_modal" data-toggle="modal" data-id="{{ $user->id }}" data-target="#contactModal"><i class="fa fa-edit" style="color: #fff"></i></a>
+                            </div>
                         </div>
-                        <div class="security-settings">
-                            <h5>security settings</h5>
-                            <p><span>Password</span>: *********</p>
+                        <div class="row security-settings">
+                            <div class="col-md-6">
+                                <h5>security settings</h5>
+                                <p><span>Password</span>: *********</p>
+                            </div>
+                            <div class="col-md-6" align="right">
+                                <a href="#" class="open_modal" data-toggle="modal" data-id="{{ $user->id }}" data-target="#passwordModal"><i class="fa fa-edit" style="color: #fff"></i></a>
+                            </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-myorder" role="tabpanel" aria-labelledby="v-pills-myorder-tab">
@@ -352,8 +388,8 @@
                     <div class="tab-pane fade" id="v-pills-referalprogram" role="tabpanel" aria-labelledby="v-pills-referalprogram-tab">
                         <div class="referal-link">
                             <h5>referal link</h5>
-                            <span><img src="img/referal.png"></span>
-                            <input type="text" class="form-control" value="https://rifa.com/?ref=albert24">
+                            <span><img src="{{ asset('frontend/img/referal.png') }}"></span>
+                            <input type="text" class="form-control" value="{{ $user->referal_link }}">
                             <button class="btn default-btn">copy link</button>
                         </div>
                         <div class="referal-income">
@@ -362,7 +398,7 @@
                                     <div class="card">
                                         <div class="row no-gutters">
                                             <div class="col-md-4">
-                                                <img src="img/earn.png" alt="...">
+                                                <img src="{{ asset('frontend/img/earn.png') }}" alt="...">
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="card-body">
@@ -377,7 +413,7 @@
                                     <div class="card">
                                         <div class="row no-gutters">
                                             <div class="col-md-4">
-                                                <img src="img/last-income.png" alt="...">
+                                                <img src="{{ asset('frontend/img/last-income.png') }}" alt="...">
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="card-body">
@@ -433,7 +469,7 @@
                                             <div class="current-item upcoming-item">
                                                 <a href="contest-detail.php">
                                                     <div class="prize-img">
-                                                        <img src="img/cars.png">
+                                                        <img src="{{ asset('frontend/img/cars.png') }}">
                                                     </div>
                                                 </a>
                                                 <div class="contest-name">BT2</div>
@@ -468,7 +504,7 @@
                                             <div class="current-item upcoming-item">
                                                 <a href="contest-detail.php">
                                                     <div class="prize-img">
-                                                        <img src="img/cars.png">
+                                                        <img src="{{ asset('frontend/img/cars.png') }}">
                                                     </div>
                                                 </a>
                                                 <div class="contest-name">BT2</div>
@@ -495,7 +531,7 @@
                                             <div class="current-item upcoming-item">
                                                 <a href="contest-detail.php">
                                                     <div class="prize-img">
-                                                        <img src="img/cars.png">
+                                                        <img src="{{ asset('frontend/img/cars.png') }}">
                                                     </div>
                                                 </a>
                                                 <div class="contest-name">BT2</div>
@@ -530,7 +566,7 @@
                                             <div class="current-item upcoming-item">
                                                 <a href="contest-detail.php">
                                                     <div class="prize-img">
-                                                        <img src="img/cars.png">
+                                                        <img src="{{ asset('frontend/img/cars.png') }}">
                                                     </div>
                                                 </a>
                                                 <div class="contest-name">BT2</div>
@@ -574,7 +610,7 @@
                                     <div class="current-item favorite-item">
                                         <a href="contest-detail.php">
                                             <div class="prize-img">
-                                                <img src="img/cars.png">
+                                                <img src="{{ asset('frontend/img/cars.png') }}">
                                             </div>
                                         </a>
                                         <div class="fav-icon">
@@ -598,7 +634,7 @@
                                     <div class="current-item favorite-item">
                                         <a href="contest-detail.php">
                                             <div class="prize-img">
-                                                <img src="img/cars.png">
+                                                <img src="{{ asset('frontend/img/cars.png') }}">
                                             </div>
                                         </a>
                                         <div class="fav-icon">
@@ -622,7 +658,7 @@
                                     <div class="current-item favorite-item">
                                         <a href="contest-detail.php">
                                             <div class="prize-img">
-                                                <img src="img/cars.png">
+                                                <img src="{{ asset('frontend/img/cars.png') }}">
                                             </div>
                                         </a>
                                         <div class="fav-icon">
@@ -650,4 +686,175 @@
 		</div>
 	</div>
 
+    {{-- modal --}}
+
+    <div class="modal fade" id="nameModal" tabindex="-1" role="dialog" aria-labelledby="nameModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h6 class="modal-title" id="nameModalLabel">Personal Details</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"><img src="{{ asset('frontend/img/close.png') }}"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="{{ route('personalIfo') }}" method="POST">
+              @csrf
+              <input type="hidden" name="id" value="{{ $user->id }}">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Name:</label>
+                <input type="text" name="name" class="form-control" id="name" value="">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Date of Birth:</label>
+                <input type="date" name="dob" class="form-control" id="dob" value="">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Address:</label>
+                <input type="text" name="address" class="form-control" id="address" value="">
+              </div>
+              <button type="submit" class="btn btn-primary">Send message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="settingModal" tabindex="-1" role="dialog" aria-labelledby="settingModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h6 class="modal-title" id="settingModalLabel">Account Settings</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"><img src="{{ asset('frontend/img/close.png') }}"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="{{ route('settingIfo') }}" method="POST">
+              @csrf
+              <input type="hidden" name="id" value="{{ $user->id }}">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Language:</label>
+                <input type="text" name="language" class="form-control" id="language" value="">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Origion:</label>
+                <input type="text" name="origion" class="form-control" id="origion" value="">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Status:</label>
+                <select name="status" class="form-control" id="status">
+                    <option value="1">Active</option>
+                    <option value="3">Ban</option>
+                    <option value="2">Unban</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Send message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h6 class="modal-title" id="contactModalLabel">Contact Settings</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"><img src="{{ asset('frontend/img/close.png') }}"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="{{ route('contactInfo') }}" method="POST">
+              @csrf
+                <input type="hidden" name="id" value="{{ $user->id }}">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Email:</label>
+                <input type="email" name="email" class="form-control" id="email" value="">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Phone:</label>
+                <input type="text" name="phone" class="form-control" id="phone" value="">
+              </div>
+              <button type="submit" class="btn btn-primary">Send message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h6 class="modal-title" id="contactModalLabel">Security Settings</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"><img src="{{ asset('frontend/img/close.png') }}"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="{{ route('passwordInfo') }}" method="POST">
+              @csrf
+                <input type="hidden" name="id" value="{{ $user->id }}">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Old Password</label>
+                <input type="password" name="old_password" class="form-control" id="old_password" value="">
+                @if(session('error'))
+                    <div class="alert alert-danger old-pass">
+                        {{ session('error') }}
+                    </div>
+                @endif
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">New Password</label>
+                <input type="password" name="new_password" class="form-control" id="new_password" value="">
+                @if ($errors->has('new_password'))
+                    <span class="help-block errshow">
+                        <strong class="errshow">{{ $errors->first('new_password') }}</strong>
+                    </span>
+                @endif
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Confirm Password</label>
+                <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" value="">
+                @if ($errors->has('password_confirmation'))
+                    <span class="help-block errshow">
+                        <strong class="errshow">{{ $errors->first('password_confirmation') }}</strong>
+                    </span>
+                @endif
+              </div>
+              <button type="submit" class="btn btn-primary">Send message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+@endsection
+@section('script')
+<script>
+    $(document).ready(function() {
+        $(document).on('click','.open_modal',function(){
+            var url = "/loadUser";
+            var userid= $(this).attr('data-id');
+            $.get(url + '/' + userid, function (data) {
+                $('#name').val(data.name);
+                $('#dob').val(data.dob);
+                $('#address').val(data.address);
+                $('#language').val(data.language);
+                $('#origion').val(data.origion);
+                $('#status').val(data.status);
+                $('#email').val(data.email);
+                $('#phone').val(data.phone);
+                $('#btn-save').val("update");
+            }) 
+        });
+
+        $(document).on('click','.localStorageClear', function(){
+            localStorage.removeItem("user");
+        });
+    });
+</script>
 @endsection

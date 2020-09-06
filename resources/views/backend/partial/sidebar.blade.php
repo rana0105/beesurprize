@@ -54,6 +54,12 @@
             @can('user-list')
             <a class="collapse-item" href="{{ route('sitesetting') }}">Site Setting</a>
             @endcan
+            @can('user-list')
+            <a class="collapse-item" href="{{ route('brand.index') }}">Brand</a>
+            @endcan
+            @can('user-list')
+            <a class="collapse-item" href="{{ route('prize.index') }}">Prize</a>
+            @endcan
           </div>
         </div>
       </li>
@@ -114,15 +120,15 @@
       </li>
 
       <!-- Divider -->
-      {{-- <hr class="sidebar-divider">
+      <hr class="sidebar-divider">
       <li class="nav-item">
         @can('blog-list')
-        <a class="nav-link collapsed" href="{{ route('mcqlist') }}">
+        <a class="nav-link collapsed" href="{{ route('questions.index') }}">
           <i class="fab fa-blogger-b"></i>
-          <span>MCQ List</span>
+          <span>Question List</span>
         </a>
         @endcan
-      </li> --}}
+      </li>
 
       <hr class="sidebar-divider">
       <li class="nav-item">

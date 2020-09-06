@@ -39,7 +39,9 @@
             </br>
         </div>
         @endif
-        <form action="{{ route('live-competition.store') }}" enctype="multipart/form-data" file="true" method="POST">
+        <form action="{{ route('live-competition.update', $contest->id) }}" enctype="multipart/form-data" file="true" method="POST">
+            <input name="_method" type="hidden" value="PUT">
+            <input type="hidden" name="id" value="{{ $contest->id }}">
             @csrf
             <div class="row">
                 <div class="col-md-8">
@@ -49,20 +51,20 @@
                                 <label for="title">
                                     Title
                                 </label>
-                                <input class="form-control" id="title" name="title" type="text" value="Server Requirements">
+                                <input class="form-control" id="title" name="title" type="text" value="{{ $contest->title }}">
                                 </input>
                             </div>
                             <div class="form-group">
                                 <label for="p_details">
                                     Prize Details
                                 </label>
-                                <textarea class="form-control" id="p_details" name="p_details" cols="30" rows="4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</textarea>
+                                <textarea class="form-control" id="p_details" name="p_details" cols="30" rows="4" value="{{ $contest->p_details }}">{{ $contest->p_details }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="c_details">
                                     Competitions Details
                                 </label>
-                                <textarea class="form-control" id="c_details" name="c_details" cols="30" rows="4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</textarea>
+                                <textarea class="form-control" id="c_details" name="c_details" cols="30" rows="4" value="{{ $contest->c_details }}">{{ $contest->c_details }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="g_image">
@@ -85,29 +87,29 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                       <label for="mile">Miles</label>
-                                      <input type="text" class="form-control" id="mile" placeholder="Mile">
+                                      <input type="text" class="form-control" name="mile" id="mile" placeholder="Mile" value="{{ $contest->mile }}">
                                     </div>
                                     <div class="form-group col-md-4">
                                       <label for="speed">Speed</label>
-                                      <input type="text" class="form-control" id="speed" placeholder="Speed">
+                                      <input type="text" class="form-control" name="speed" id="speed" placeholder="Speed" value="{{ $contest->speed }}">
                                     </div>
                                     <div class="form-group col-md-4">
                                       <label for="power">Power</label>
-                                      <input type="text" class="form-control" id="power" placeholder="Power">
+                                      <input type="text" class="form-control" name="power" id="power" placeholder="Power" value="{{ $contest->power }}">
                                     </div>
                                   </div>
                                   <div class="form-row">
                                     <div class="form-group col-md-4">
                                       <label for="displacement">Displacement</label>
-                                      <input type="text" class="form-control" id="displacement" placeholder="Displacement">
+                                      <input type="text" class="form-control" name="displacement" id="displacement" placeholder="Displacement" value="{{ $contest->displacement }}">
                                     </div>
                                     <div class="form-group col-md-4">
                                       <label for="bhp">Bhp</label>
-                                      <input type="text" class="form-control" id="bhp" placeholder="Bhp">
+                                      <input type="text" class="form-control" name="bhp" id="bhp" placeholder="Bhp" value="{{ $contest->bhp }}">
                                     </div>
                                     <div class="form-group col-md-4">
                                       <label for="year">Year</label>
-                                      <input type="text" class="form-control" id="year" placeholder="Year">
+                                      <input type="text" class="form-control" name="year" id="year" placeholder="Year" value="{{ $contest->year }}">
                                     </div>
                                   </div>
                               </div>
@@ -122,21 +124,21 @@
                                 <label for="contest_no">
                                     Contest No
                                 </label>
-                                <input class="form-control" id="contest_no" name="contest_no" type="text" value="T20">
+                                <input class="form-control" id="contest_no" name="contest_no" type="text" value="{{ $contest->contest_no }}">
                                 </input>
                             </div>
                             <div class="form-group">
                                 <label for="amount">
                                     Ticket Amount
                                 </label>
-                                <input class="form-control" id="amount" name="amount" type="text" value="2000">
+                                <input class="form-control" id="amount" name="amount" type="text" value="{{ $contest->amount }}">
                                 </input>
                             </div>
                             <div class="form-group">
                                 <label for="price">
                                     Ticket Price
                                 </label>
-                                <input class="form-control" id="price" name="price" type="text" value="120">
+                                <input class="form-control" id="price" name="price" type="text" value="{{ $contest->price }}">
                                 </input>
                             </div>
                             <div class="form-group">
@@ -144,9 +146,9 @@
                                     Prize Type
                                 </label>
                                 <select class="form-control" id="prize_type" name="prize_type">
-                                    <option value="">Bike</option>
-                                    <option value="">Car</option>
-                                    <option value="">Cycle</option>
+                                    <option value="Bike" {{ $contest->prize_type === 'Bike' ? 'selected' : '' }}>Bike</option>
+                                    <option value="Car" {{ $contest->prize_type === 'Car' ? 'selected' : '' }}>Car</option>
+                                    <option value="Cycle" {{ $contest->prize_type === 'Cycle' ? 'selected' : '' }}>Cycle</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -154,16 +156,16 @@
                                     Makers
                                 </label>
                                 <select class="form-control" id="makers" name="makers">
-                                    <option value="">BMW</option>
-                                    <option value="">Ferari</option>
-                                    <option value="">Honda</option>
+                                    <option value="BMW" {{ $contest->makers === 'BMW' ? 'selected' : '' }}>BMW</option>
+                                    <option value="Ferari" {{ $contest->makers === 'Ferari' ? 'selected' : '' }}>Ferari</option>
+                                    <option value="Honda" {{ $contest->makers === 'Honda' ? 'selected' : '' }}>Honda</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="c_details">
+                                <label for="end_date">
                                     Competitions End Date
                                 </label>
-                                <input class="form-control" id="c_details" name="c_details" type="date" value="07/08/2020">
+                                <input class="form-control" id="end_date" name="end_date" type="date" value="{{ $contest->end_date }}">
                                 </input>
                             </div>
                             <div class="form-group">
@@ -200,7 +202,10 @@
 </script>
 <script>
     tinymce.init({
-     selector: 'textarea#detail'
+     selector: 'textarea#p_details'
+   });
+    tinymce.init({
+     selector: 'textarea#c_details'
    });
     $(document).ready(function(){
         $("#g_image").spartanMultiImagePicker({

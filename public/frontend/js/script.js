@@ -58,29 +58,32 @@ $('.ticketno').keyup(function() {
 });
 
 /*---------- Select 2 ----------*/
-$('.prize').select2({
-	placeholder:"Select a prize"
-});
-$('.contest-list').select2({
-	placeholder:"Select contest no"
-});
-$('.prize-brand').select2();
+$(document).ready(function() {
+  $('.prize').select2({
+  	placeholder:"Select a prize"
+  });
+  $('.contest-list').select2({
+  	placeholder:"Select contest no"
+  });
+  $('.prize-brand').select2();
 
-$('#winning-month').Monthpicker({
+  $('#winning-month').Monthpicker({
 
-  // default values
-  // format: mm/yyyy
-  minYear: null,
-  maxYear: null,
-  minValue: null,
-  maxValue: null,
+    // default values
+    // format: mm/yyyy
+    minYear: null,
+    maxYear: null,
+    minValue: null,
+    maxValue: null,
 
-  // i18n
-  monthLabels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jui", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    // i18n
+    monthLabels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jui", "Aug", "Sep", "Oct", "Nov", "Dec"],
 
-  // Callback events
-  onSelect: function() { return; },
-  onClose: function() { return; }
+    // Callback events
+    onSelect: function() { return; },
+    onClose: function() { return; }
+  });
+
 });
 
 
@@ -235,7 +238,7 @@ function getCountdown(){
   seconds = pad( parseInt( seconds_left % 60 ) );
 
   // format countdown string + set tag value
-  countdown.innerHTML = "<span>" + days + "</span><span>" + hours + "</span><span>" + minutes + "</span><span>" + seconds + "</span>"; 
+  //countdown.innerHTML = "<span>" + days + "</span><span>" + hours + "</span><span>" + minutes + "</span><span>" + seconds + "</span>"; 
 }
 
 function pad(n) {
@@ -281,30 +284,34 @@ $("#imageUpload").change(function() {
     readURL(this);
 });
 
-// Data table
-$('#pastdraw').DataTable({
-    dom: 'frt',
-    "bFilter": false, 
-    "scrollX": true,
-    "columnDefs": [
-        { "orderable": false, "targets": "_all" } // Applies the option to all columns
-    ],    
-});
+$(document).ready(function() {
 
-$('#myorder').DataTable({
-    dom: 'frt',
-    "bFilter": false, 
-    "scrollX": true,
-    "columnDefs": [
-        { "orderable": false, "targets": "_all" } // Applies the option to all columns
-    ],    
-});
+  // Data table
+  $('#pastdraw').DataTable({
+      dom: 'frt',
+      "bFilter": false, 
+      "scrollX": true,
+      "columnDefs": [
+          { "orderable": false, "targets": "_all" } // Applies the option to all columns
+      ],    
+  });
 
-$('#mypartners').DataTable({
-    dom: 'frt',
-    "scrollX": true,
-    language: { search: "" },
-    "columnDefs": [
-        { "orderable": false, "targets": "_all" } // Applies the option to all columns
-    ],    
+  $('#myorder').DataTable({
+      dom: 'frt',
+      "bFilter": false, 
+      "scrollX": true,
+      "columnDefs": [
+          { "orderable": false, "targets": "_all" } // Applies the option to all columns
+      ],    
+  });
+
+  $('#mypartners').DataTable({
+      dom: 'frt',
+      "scrollX": true,
+      language: { search: "" },
+      "columnDefs": [
+          { "orderable": false, "targets": "_all" } // Applies the option to all columns
+      ],    
+  });
+
 });

@@ -2,7 +2,7 @@
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="{{ asset('js/custom.js') }}"></script>
   <script src="{{ asset('js/tinymce.js') }}"></script>
-  {{-- <script src="https://cdn.tiny.cloud/1/oiomgdbrx69shs8mbwnjbevxe06tt1w9rtxo5960f5akvipt/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
+  <script src="https://cdn.tiny.cloud/1/oiomgdbrx69shs8mbwnjbevxe06tt1w9rtxo5960f5akvipt/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
   {{-- <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script> --}}
   <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
